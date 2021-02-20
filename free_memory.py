@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
 def main():
-	pass
+"""Check if there is enough space"""
+
 main()
