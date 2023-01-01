@@ -1,2 +1,0 @@
-# git
-for git command
