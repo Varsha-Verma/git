@@ -1,0 +1,1 @@
+This is a file in Remote repo that will be cloned to Local repo
