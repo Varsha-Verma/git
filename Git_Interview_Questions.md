@@ -93,6 +93,97 @@ Answer: To resolve conflicts, I would first use the Git command git status to id
 ### Q. You accidentally deleted a file in your local Git repository. How would you retrieve the file?
 Answer: To retrieve the deleted file, I would use the Git command git checkout <file> followed by the name of the file that was deleted. This would retrieve the file from the most recent commit in the Git repository.
 
+### Q. Why is it considered to be easy to work on Git?
+Answer: With the help of git, developers have gained many advantages in terms of performing the development process faster and in a more efficient manner. Some of the main features of git which has made it easier to work are:
+
+#### Branching Capabilities:
+
+- Due to its sophisticated branching capabilities, developers can easily work on multiple branches for the different features of the project.
+- It also has an easier merge option along with an efficient work-flow feature diagram for tracking it.
+ 
+#### Distributed manner of development:
+
+- Git is a distributed system and due to this nature, it became easier to trace and locate data if it's lost from the main server.
+- In this system, the developer gets a repository file that is present on the server. Along with this file, a copy of this is also stored in the developer’s system which is called a local repository.
+- Due to this, the scalability of the project gets drastically improved.
+ 
+#### Pull requests feature:
+
+- This feature helps in easier interaction amongst the developers of a team to coordinate merge-operations.
+- It keeps a proper track of the changes done by developers to the code.
+ 
+#### Effective release cycle:
+
+- Due to the presence of a wide variety of features, git helps to increase the speed of the release cycle and helps to improve the project workflow in an efficient manner.
+ 
+### Q. How will you create a git repository?
+Answer: 
+- Have git installed in your system. 
+- Then in order to create a git repository, create a folder for the project and then run ```git init```. 
+- Doing this will create a .git file in the project folder which indicates that the repository has been created
+ 
+### Q. Tell me something about git stash?
+Answer: Git stash can be used in cases where we need to switch in between branches and at the same time not wanting to lose edits in the current branch. Running the ```git stash``` command basically pushes the current working directory state and index to the stack for future use and thereby providing a clean working directory for other tasks.
+ 
+### Q. What is the command used to delete a branch?
+Answer: 
+ - To delete a branch we can simply use the command ```git branch –d [head]```.
+- To delete a branch locally, we can simply run the command: ```git branch -d <local_branch_name>```
+- To delete a branch remotely, run the command: ```git push origin --delete <remote_branch_name>```
+- Deleting a branching scenario occurs for multiple reasons. One such reason is to get rid of the feature branches once it has been merged into the development branch
+
+### Q. What differentiates between the commands git remote and git clone?
+Answer: ```git remote``` command creates an entry in  git config that specifies a name for a particular URL. Whereas git clone creates a new git repository by copying an existing one located at the URL.
+ 
+### Q. What does git stash apply command do?
+Answer: ```git stash apply``` command is used for bringing the works back to the working directory from the stack where the changes were stashed using git stash command.
+ 
+This helps the developers to resume their work where they had last left their work before switching to other branches.
+
+### Q. Differentiate between git pull and git fetch.
+Answer: 
+#### Git Pull:
+This command pulls new changes from the currently working branch located in the remote central repository.
+ 
+#### Git Fetch:
+This command is also used for a similar purpose but it follows a two step process: 
+1. Pulls all commits and changes from desired branch and stores them in a new branch of the local repository. 
+current
+2. For changes to be reflected in the current / target branch, git fetch should be followed by git merge command.
+ 
+```
+git pull = git fetch + git merge
+ 
+```
+ 
+### Q. Can you give differences between “pull request” and “branch”?
+Answer:  
+#### Pull Request:
+This process is done when there is a need to put a developer’s change into another person’s code branch.
+ 
+#### Branch:
+A branch is nothing but a separate version of the code.
+ 
+### Q. Why do we not call git “pull request” as “push request”?
+Answer: 
+ 
+- “Push request” is termed so because it is done when the target repository requests us to push our changes to it.
+- “Pull request” is named as such due to the fact that the repo requests the target repository to grab (or pull) the changes from it. 
+![Pull request](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/180/original/git_central_repository.png?1615888211)
+ 
+### Q. Can you tell the difference between Git and GitHub?
+Answer: 
+#### GIT:
+- This is a distributed version control system installed on local machines which allow developers to keep track of commit histories and supports collaborative work.
+- This is maintained by “The Linux Foundation”.
+- SVN, Mercurial, etc are the competitors
+ 
+#### GitHub:
+- This is a cloud-based source code repository developed by using git.
+- This was acquired by “Microsoft.
+- GitLab, Atlassian BitBucket, etc are the competitors.
+
+
 ### Q. You need to revert to a previous version of your codebase because of a bug introduced in the latest commit. How would you revert to the previous version?
 Answer: To revert to a previous version of the codebase, I would use the Git command git log to identify the commit that introduced the bug. Then, I would use the git checkout <commit> command followed by the commit ID to revert to the previous version of the codebase. If I need to make changes to this version, I would create a new branch and make the necessary changes there.
 
@@ -101,3 +192,5 @@ Answer: To create a new branch, I would use the Git command git branch <branch-n
 
 ### Q. You need to update your local repository with the latest changes from the remote repository. How would you update your local repository?
 Answer: To update my local repository with the latest changes from the remote repository, I would use the Git command git pull. This command would fetch the latest changes from the remote repository and merge them into my local repository.
+
+ 
