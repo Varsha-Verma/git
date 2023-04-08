@@ -183,7 +183,219 @@ Answer:
 - This was acquired by “Microsoft.
 - GitLab, Atlassian BitBucket, etc are the competitors.
 
+### Q. What has to be run to squash multiple commits (last N) into a single commit?
+Answer: Squashing multiple commits to a single one overwrites the history which is why it is recommended to be done using full caution. This step can be done by running the command: ```git rebase -i HEAD~{{N}}``` where {{N}} represents the number of commits needed to be squashed.
 
+### Q. How would you recover a branch that has already pushed changes in the central repository but has been accidentally deleted from every team member’s local machines?
+Answer: We can recover this by checking out the latest commit of this branch in the reflog and then checking it out as a new branch.
+ 
+### Q. Can you tell something about git reflog?
+Answer: This command tracks every single change made in the repository references (that can be branches or tags) and also maintains the branches/tags log history that was either created locally or checked out. Reference logs such as the commit snapshot of when the branch was created or cloned, checked-out, renamed, or any commits made on the branch are maintained by Git and listed by the ‘reflog’ command.
+
+- This recovery of the branch is only possible when the branch was either created locally or checked-out from a remote repository in your local repository for Git to store its reference history logs.
+- This command should be executed in the repository that had the lost branch.
+ 
+### Q. What consists of a commit object?
+Answer: A commit object consists of the following components:
+
+- A set of files that represents the state of a project at a given point in time.
+- Reference to parent commit objects.
+- A 40 character string termed as SHA-1 name uniquely identifies the commit object.
+
+### Q. Explain the levels in git config and how can you configure values using them?
+Answer: In order to make git work, it uses a set of configurations that are pre-defined by default by means of configuration files (or config files). We can change the default behavior of git by just modifying these files which are basically text files. In order to do this, it is important to understand how git identifies these files. It does so by following the below steps:
+
+- Firstly, git searches for the config values in the system-wide gitconfig file stored in <<installation_path>>/etc/gitconfig file that has settings defined and applied to every user of the system and all their repos.
+  - In case you want git to search from this particular file and read/write on it, we can pass the option --system to git config command.
+ 
+- Next, git searches for the ~/.gitconfig file or ~/.config/git/config that has the scope specific to the user.
+   - Git can be made to read/ write from this file specifically bypassing --global to the git config command.
+
+- Lastly, git searches for the config values in the git directory of the local repository that we are currently working on.
+   - These config values are specific to that particular repository alone and can be accessed by passing --local to the git config command.This is the default config file that gets accessed and modified upon in case we do not specify any levels
+ 
+### Q. What is a detached HEAD and what causes this and how to avoid this?
+Answer: Detached HEAD indicates that the currently checked-out repository is not a local branch. This can be caused by the following scenarios:
+
+- When a branch is a read-only branch and we try to create a commit to that branch, then the commits can be termed as “free-floating” commits not connected to any branch. They would be in a detached state.
+- When we checkout a tag or a specific commit and then we try to perform a new commit, then again the commits would not be connected to any branch. When we now try to checkout a branch, these new commits would be automatically placed at the top.
+
+In order to ensure that detached state doesn't happen, =instead of checking out commit/tag, we can create a branch emanating from that commit and then we can switch to that newly created branch by using the command: ```git checkout -b <<new_branch_name>>```. This ensures that a new branch is checkout out and not a commit/tag thereby ensuring that a detached state wouldn't happen.
+ 
+### Q. What does git annotate command do?
+Answer: 
+- This command annotates each line within the given file with information from the commit which introduced that change. This command can also optionally annotate from a given revision.
+- Syntax: ```git annotate [<options>] <file> [<revision>]```
+- You can get to learn more about this command from the official git documentation here.
+ 
+### Q. What is the difference between git stash apply vs git stash pop command?
+Answer: ```git stash pop``` command throws away the specified stash (topmost stash by default) after applying it.
+```git stash apply``` command leaves the stash in the stash list for future reuse. In case we wanted to remove it from the list, we can use the ```git stash drop``` command.
+```git stash pop = git stash apply + git stash drop```
+
+ 
+# Advanced GIT Interview Questions:
+ 
+### Q. What command helps us know the list of branches merged to master? 
+Answer: 
+- ```git branch --merged``` helps to get the list of the branches that have been merged into the current branch.
+Note: ```git branch --no-merged``` lists the branches that have not been merged to the current branch.
+ 
+### Q. How will you resolve conflict in Git?
+Answer: 
+- Conflicts occur whenever there are multiple people working on the same file across multiple branches. In such cases, git won't be able to resolve it automatically as it is not capable of deciding what changes has to get the precedence.
+- Following are the steps are done in order to resolve git conflicts:
+1. Identify the files that have conflicts.
+2. Discuss with members who have worked on the file and ensure that the required changes are done in the file.
+3. Add these files to the staged section by using the git add command.
+4. Commit these changes using the git commit command.
+5. Finally, push the changes to the branch using the git.
+ 
+### Q. What is best advisable step in cases of broken commit: Create an additional commit OR amend an existing commit?
+Answer: It is always advisable to create an additional commit rather than amending the existing commit due to the following reasons:
+- Doing the amend operation destroys the previously saved state of that commit. If only the commit message gets changes or destroyed, it's acceptable but there might be cases when the contents of the commits get amended. This results in the loss of important information associated with the commit.
+- Over usage of ```git commit --amend``` can have severe repercussions as the small commit amend can continue to grow and gather unrelated changes over time.
+ 
+### Q. How to revert a bad commit which is already pushed?
+Answer: There can be cases where we want to revert from the pushed changes and go back to the previous version. To handle this, there are two possible approaches based on the situations:
+
+- Approach 1: Fix the bad changes of the files and create a new commit and push to the remote repository. This step is the simplest and most recommended approach to fix bad changes. You can use the command: ```git commit -m "<message>"```
+- Approach 2: New commit can be created that reverts changes done in the bad commit. It can be done using ```git revert <name of bad commit>```
+ 
+### Q. What is the functionality of “git cherry-pick” command?
+Answer: This command is used to introduce certain commits from one branch onto another branch within the repository. The most common use case is when we want to forward- or back-port commits from the maintenance branch to the development branch.
+ 
+### Q. Explain steps involved in removing a file from git index without removing from the local file system?
+Answer: 
+- Sometimes we end up having certain files that are not needed in the git index when we are not being careful while using the git add command. Using the command git rm will remove the file from both the index and the local working tree which is not always desirable.
+ 
+- Instead of using the git rm command we can use the git reset command for removing the file from the staged version and then adding that file to the .gitignore file to avoid repeating the same mistake again.
+``` 
+git reset <file_name> # remove file from index
+echo filename >> .gitingore  # add file to .gitignore to avoid mistake repetition. 
+``` 
+ 
+### Q. What are the factors involved in considering which command to choose among: git merge and git rebase?
+Answer: Both these commands ensure that changes from one branch are integrated into another branch but in very different ways. Git rebasing can be thought of as saying to use another branch as a new base for the work.
+
+- Whenever in doubt, it is always preferred to use the ```git merge``` command.
+
+Following are some factors that tell when to use merge and rebase commands:
+ 
+- In case our branch gets contributions from other developers outside the team as in open-source or public repositories, then rebase is not preferred.
+  - This is because rebase destroys the branch and it results in broken and inconsistent repositories unless the ```git pull --rebase``` command is used.
+- Rebase is a very destructive operation. If not applied correctly, it results in loss of committed work which might result in breaking the consistency of other developer’s contribution to the repository.
+- If the model of having branches per feature is followed, rebasing is not a good idea there because it keeps track of related commits done by the developers. But in case the team follows having branches per developer of the team, then the branch has no additional useful information to be conveyed. In this model, rebasing has no harm and can be used.
+- If there is any chance where there might be a necessity to revert a commit to previous commits, then reverting a rebase would be almost impossible as the commit data would be destroyed. In such cases, the merge can be used.
+ 
+### Q. How do you find a commit which broke something after a merge operation?
+Answer: 
+- This can be a time-consuming process if we are not sure what to look at exactly. Fortunately, git provides a great search facility that works on the principle of binary search as git-bisect command.
+- The initial set up is as follows:
+```
+git bisect start         # initiates bisecting session
+git bisect bad           # marks current revision as bad
+git bisect good revision # marks last known commit as good revision
+ ```
+- Upon running the above commands, git checks out a revision that is labeled as halfway between “good” and “bad” versions. This step can be run again by marking the commit as “good” or “bad” and the process continues until the commit which has a bug is found
+ 
+### Q. What are the functionalities of git reset --mixed and git merge --abort?
+Answer: 
+```
+- git reset --mixed command is used for undoing changes of the working directory and the git index.
+- git merge --abort command is used for stopping the merge process and returning back to the state before the merging occurred. 
+```
+ 
+### Q. Differnecr between Git revert & Git reset?
+Answer: 
+#### Git Revert:
+- This command is used for creating a new commit that undoes the changes of the previous commit.
+- Using this command adds a new history to the project without modifying the existing history 
+ 
+#### Git Reset: 
+- This command is used for undoing the local changes done in the git repository
+- This command operates on the commit history, git index, and the working directory. 
+ 
+### Q. Which command defines the author email to be used for all commits by the current user.
+1. git clean -f
+2. git merge --no-ff
+3. git email–amend
+4. git config --global user.email
+ 
+Answer: git config --global user.email
+ 
+### Q. What command removes untracked files from the working directory?
+1. git reset
+2. git clean
+3. git stash
+4. git clean -f 
+ 
+Answer: git clean
+ 
+### Q. What command is used to download all files and objects from a defined repository?
+1. git init origin
+2. git push
+3. git fetch
+4. git log -n 
+ 
+Answer: git fetch
+ 
+### Q. For the local repository to reflect changes made in a remote repository what command has to be run?
+1. git pull
+2. git stash
+3. git rebase
+4. git commit 
+ 
+Answer: Git pull
+ 
+### Q. Choose the option that best satisfies the statement: Git is a decentralized version control system.
+1. The statement is true.
+2. The statement is false as git should be centralised.
+3. Git is not a version control system.
+4. I have no idea about git.
+ 
+Answer: The statement is true.
+ 
+### Q. What command creates an empty Git repository?
+1. git init -new
+2. git init
+3. git fetch
+4. git start
+ 
+Answer: git init
+ 
+### Q. Which of the below do things belong to the data structure that implements Git?
+1. Commit Object
+2. Branch Pointer
+3. Head Pointer
+4. All of the above
+ 
+Answer:All of the above 
+ 
+### Q. What git command is used to add a tag to a commit?
+1. git tag [commitId]
+2. git label [commitId]
+3. git set [commitId]
+4. git push [commitId] 
+ 
+Answer:  git tag [commitId]
+ 
+### Q. What is the correct commit command for all changes along with its message?
+1. git add -a “For All Changes”
+2. git push -a “For All Changes”
+3. git commit -am “For All Changes”
+4. git message -am “For All Changes” 
+ 
+Answer: git commit -am “For All Changes”
+
+### Q. What process is an alternative to merging?
+1. Rebasing
+2. Basing
+3. There is no such alternative
+4. Pushing 
+ 
+Answer: Rebasing
+ 
 ### Q. You need to revert to a previous version of your codebase because of a bug introduced in the latest commit. How would you revert to the previous version?
 Answer: To revert to a previous version of the codebase, I would use the Git command git log to identify the commit that introduced the bug. Then, I would use the git checkout <commit> command followed by the commit ID to revert to the previous version of the codebase. If I need to make changes to this version, I would create a new branch and make the necessary changes there.
 
@@ -192,5 +404,6 @@ Answer: To create a new branch, I would use the Git command git branch <branch-n
 
 ### Q. You need to update your local repository with the latest changes from the remote repository. How would you update your local repository?
 Answer: To update my local repository with the latest changes from the remote repository, I would use the Git command git pull. This command would fetch the latest changes from the remote repository and merge them into my local repository.
+
 
  
