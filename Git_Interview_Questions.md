@@ -1,7 +1,7 @@
 # Git Interview Questions
 ![Git](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/768px-Git-logo.svg.png?20160811101906)
 
-###Q. What is Git and why do we use it?
+### Q. What is Git and why do we use it?
 Answer: Git is a version control system that allows multiple developers to work on the same codebase without interfering with each other's work. It keeps track of changes to the codebase over time and makes it easy to revert to previous versions if necessary. We use Git to collaborate on code, track changes, and ensure that everyone on the team is working on the same version of the code.
 ![Git basic](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/177/original/git_repos.png?1615875919)
 OR you can also describe it as:
@@ -16,8 +16,15 @@ Answer: Some of the advantages of using Git over other version control systems i
 ### Q. What is a branch in Git?
 Answer: A branch in Git is a separate line of development that allows developers to work on a specific feature or bug fix without affecting the main codebase. Each branch is a separate copy of the codebase that can be modified independently, and changes made to one branch do not affect the other branches until they are merged together.
 
+### Q. Why do we require branching in GIT?
+Answer: With the help of branching, you can keep your branch, and you can also jump between the different branches. You can go to your past work while at the same time keeping your recent work intact.
+
 ### Q. What is a commit in Git?
 Answer: A commit in Git is a snapshot of changes made to the codebase at a specific point in time. Each commit includes a unique identifier, a commit message that describes the changes made, and a reference to the previous commit. Commits are used to track changes to the codebase over time and to revert to previous versions if necessary.
+
+or
+
+Git commits "records changes to the storehouse" while git push " updates remote refs along with contained objects" So the first one is used in a network with your local repository, while the latter one is used to communicate with a remote repository.
 
 ### Q. What is a merge conflict in Git?
 Answer: A merge conflict in Git occurs when two or more developers make conflicting changes to the same file or lines of code. Git is unable to automatically merge the changes, and the developers must manually resolve the conflict by editing the affected files and deciding which changes to keep and which to discard.
@@ -28,8 +35,78 @@ Answer: A VCS keeps track of the contributions of the developers working as a te
 ### Q. What is a git repository?
 Answer: A repository is a file structure where git stores all the project-based files. Git can either stores the files on the local or the remote repository
 
+### Q. What is 'bare repository' in Git?
+Answer:A "bare" repository in Git includes the version control information and no working files (no tree), and it doesn?t include the special. git sub-directory. Instead, it consists of all the contents of the .git sub-directory directly in the main directory itself, whereas working list comprises of:
+- A .git subdirectory with all the Git associated revision history of your repo.
+- A working tree, or find out copies of your project files.
+
+### Q. What is the function of 'GIT PUSH' in GIT?
+Answer: 'GIT PUSH' updates remote refs along with related objects
+
+### Q. What is the definition of "Index" or "Staging Area" in GIT?
+Answer: When you are making the commits, you can make innovation to it, format it and review it in the common area known as 'Staging Area' or 'Index'.
+
+### Q. What is git pull origin?
+Answer: pull is a get and a consolidation. 'git pull origin master' brings submits from the master branch of the source remote (into the local origin/master branch), and then it combines origin/master into the branch you currently have looked out.
+
+### Q. Why GIT better than Subversion?
+Answer: GIT is an open source version control framework; it will enable you to run 'adaptations' of a task, which demonstrate the changes that were made to the code over time also it allows you keep the backtrack if vital and fix those changes. Multiple developers can check out, and transfer changes, and each change can then be attributed to a particular developer.
+
+### Q. What is the distinction between Git and Github?
+Answer: Git is a correction control framework, a tool to deal with your source code history.
+
+GitHub is a hosting function for Git storehouses.
+
+GitHub is a website where you can transfer a duplicate of your Git archive. It is a Git repository hosting service, which offers the majority of the distributed update control and source code management (SCM) usefulness of Git just as including its features
+
+### Q. In Git, how would you return a commit that has just been pushed and made open?
+Answer: There can be two answers to this question and ensure that you incorporate both because any of the below choices can be utilized relying upon the circumstance:
+
+1. Remove or fix the bad document in another commit and push it to the remote repository. This is a unique approach to correct a mistake. Once you have necessary changes to the record, commit it to the remote repository for that I will utilize
+```
+git submit - m "commit message."
+```
+
+2. Make another commit that fixes all changes that were made in the terrible commit. to do this, I will utilize a command
+```
+git revert <name of bad commit>
+```
+
+### Q. What does the committed item contain?
+Answer: Commit item contains the following parts; you should specify all the three present below:
+
+A set of records, representing to the condition of a task at a given purpose of time
+
+References to parent commit objects
+
+An SHAI name, a 40 character string that uniquely distinguishes the commit object.
+
+### Q. Describing branching systems you have utilized?
+Answer: This question is a challenge to test your branching knowledge with Git along these lines, inform them regarding how you have utilized branching in your past activity and what reason does it serves, you can refer the below mention points:
+
+__Feature Branching:__
+
+A component branch model keeps the majority of the changes for a specific element within a branch. At the point when the item is throughout tested and approved by automated tests, the branch is then converged into master.
+
+__Task Branching:__
+
+In this model, each assignment is actualized on its branch with the undertaking key included in the branch name. It is anything but difficult to see which code actualizes which task, search for the task key in the branch name.
+
+__Release Branching:__
+
+Once the create branch has procured enough features for a discharge, you can clone that branch to frame a Release branch. Making this branch begins the following discharge cycle so that no new features can be included after this point, just bug fixes, documentation age, and other release oriented assignments ought to go in this branch. When it is prepared to deliver, the release gets converged into master and labeled with a form number. Likewise, it should be converged once again into creating a branch, which may have advanced since the release was started.
+
+At last, disclose to them that branching methodologies fluctuate starting with one association then onto the next, so I realize essential branching activities like delete, merge, checking out a branch, etc.
+
+### Q. What is the purpose of 'git config'?
+Answer: The 'Git config' is a great method to configure your choice for the Git installation. Using this command, you can describe the repository behavior, preferences, and user information.
+
 ### Q. What does git clone do?
 Answer: The command creates a copy (or clone) of an existing git repository. Generally, it is used to get a copy of the remote repository to the local repository.
+
+or
+
+The git clone command generates a copy of a current Git repository. To get the copy of a central repository, 'cloning' is the simplest way used by programmers.
 
 ### Q. What does the command git config do?
 Answer: The git config command is a convenient way to set configuration options for defining the behavior of the repository, user information and preferences, git installation-based configurations, and many such things. 
@@ -60,7 +137,7 @@ Usages:
 - To make a new commit by reverting the last 3 commits, we can run the command: ```git revert --no-commit HEAD~3...HEAD```
 
 ### Q. What is a conflict?
-Answer: Git usually handles feature merges automatically but sometimes while working in a team environment, there might be cases of conflicts such as:
+Answer: A 'conflict' appears when the commit that has to be combined has some change in one place, and the current act also has a change at the same place. Git will not be easy to predict which change should take precedence. Git usually handles feature merges automatically but sometimes while working in a team environment, there might be cases of conflicts such as:
 
 1. When two separate branches have changes to the same line in a file
 2. A file is deleted in one branch but has been modified in the other.
@@ -125,6 +202,11 @@ Answer:
 ### Q. Tell me something about git stash?
 Answer: Git stash can be used in cases where we need to switch in between branches and at the same time not wanting to lose edits in the current branch. Running the ```git stash``` command basically pushes the current working directory state and index to the stack for future use and thereby providing a clean working directory for other tasks.
  
+ GIT stash takes the present state of the working file and index and puts in on the stack for next and gives you back a clean working file. So in case if you are in the middle of object and require to jump over to the other task, and at the same time you don't want to lose your current edits, you can use GIT stash.
+ 
+### Q. What is GIT stash drop?
+Answer: When you are done with the stashed element or want to delete it from the directory, run the git 'stash drop' command. It will delete the last added stash item by default, and it can also remove a specific topic if you include as an argument.
+ 
 ### Q. What is the command used to delete a branch?
 Answer: 
  - To delete a branch we can simply use the command ```git branch –d [head]```.
@@ -143,9 +225,12 @@ This helps the developers to resume their work where they had last left their wo
 ### Q. Differentiate between git pull and git fetch.
 Answer: 
 #### Git Pull:
-This command pulls new changes from the currently working branch located in the remote central repository.
+- This command pulls new changes from the currently working branch located in the remote central repository.
+- Git pull command pulls innovation or commits from a specific branch from your central repository and updates your object branch in your local repository.
  
 #### Git Fetch:
+Git fetch is also used for the same objective, but it works in a slightly different method. When you behave a git fetch, it pulls all new commits from the desired branch and saves it in a new branch in your local repository. If you need to reflect these changes in your target branch, git fetch should be followed with a git merge. Your target branch will only be restored after combining the target branch and fetched branch.
+ 
 This command is also used for a similar purpose but it follows a two step process: 
 1. Pulls all commits and changes from desired branch and stores them in a new branch of the local repository. 
 current
@@ -240,6 +325,12 @@ Answer: ```git stash pop``` command throws away the specified stash (topmost sta
 Answer: 
 - ```git branch --merged``` helps to get the list of the branches that have been merged into the current branch.
 Note: ```git branch --no-merged``` lists the branches that have not been merged to the current branch.
+
+### Q. How might you fix a messed up submit?
+Answer: To fix any messed up commit, you will utilize the order ```"git commit?correct"``` By running this direction, you can set the wrecked commit message in the editor.
+
+On the command line, navigate to the repository that contains the commit you want to amend. Type git commit --amend and press Enter. In your text editor, edit the commit message, and save the commit.
+ 
  
 ### Q. How will you resolve conflict in Git?
 Answer: 
@@ -305,8 +396,16 @@ Answer:
 - git reset --mixed command is used for undoing changes of the working directory and the git index.
 - git merge --abort command is used for stopping the merge process and returning back to the state before the merging occurred. 
 ```
+
+### Q. What is Subgit? Why use it?
+Answer: 'Subgit' is a tool that migrates SVN to Git. It is a stable and stress-free migration. Subgit is one of the solutions for a company-wide migration from SVN to Git that is:
+
+- It is much superior to git-svn
+- No need to change the infrastructure that is already placed.
+- It allows using all git and all sub-version features.
+- It provides stress ?free migration experience.
  
-### Q. Differnecr between Git revert & Git reset?
+### Q. Difference between Git revert & Git reset?
 Answer: 
 #### Git Revert:
 - This command is used for creating a new commit that undoes the changes of the previous commit.
@@ -315,6 +414,17 @@ Answer:
 #### Git Reset: 
 - This command is used for undoing the local changes done in the git repository
 - This command operates on the commit history, git index, and the working directory. 
+
+### Q. Mention the various Git repository hosting functions.
+Answer: The following are the Git repository hosting functions:
+
+- Pikacode
+- Visual Studio Online
+- GitHub
+- GitEnterprise
+- SourceForge.net
+ 
+ 
  
 ### Q. Which command defines the author email to be used for all commits by the current user.
 1. git clean -f
@@ -405,5 +515,8 @@ Answer: To create a new branch, I would use the Git command git branch <branch-n
 ### Q. You need to update your local repository with the latest changes from the remote repository. How would you update your local repository?
 Answer: To update my local repository with the latest changes from the remote repository, I would use the Git command git pull. This command would fetch the latest changes from the remote repository and merge them into my local repository.
 
-
+### Q. What does 'hooks' comprise of in Git?
+Answer: This index comprises of Shell contents which are enacted after running the relating git commands. For instance, Git will attempt to execute the post-commit content after you run a commit.
+ 
+ 
  
