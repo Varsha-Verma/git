@@ -6,12 +6,44 @@ Answer: Git is a version control system that allows multiple developers to work 
 ![Git basic](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/177/original/git_repos.png?1615875919)
 OR you can also describe it as:
 
-- Git is the most popular, open-source, widely used, and an example of distributed version control system (DVCS) used for handling the development of small and large projects in a more efficient and neat manner.
+- Git is the most popular, open-source, widely used, and an example of distributed version control system (DVCS) used for handling the development of small and large projects in a more efficient and neat manner. 
+- It lets you track changes made to a file and allows you to revert back to any particular change that you wish.
 - It is most suitable when there are multiple people working on projects as a team and is used for tracking the project changes and efficiently supports the collaboration of the development process.
 - With the help of the versioning system, the developer can identify who has made what changes and then run tests and fix bugs if any and then do necessary feature implementation. In case of any unforeseen circumstances, the code can be reverted to any of the previously working versions thereby saving huge efforts.
 
+- It is a distributed architecture that provides many advantages over other Version Control Systems (VCS) like SVN. One of the major advantages is that it does not rely on a central server to store all the versions of a project’s files.
+
+- Instead, every developer “clones” a copy of a repository I have shown in the diagram with “Local repository” and has the full history of the project available on his hard drive. So when there is a server outage all you need to do to recover is one of your teammate’s local Git repository.
+
+- There is a central cloud repository where developers can commit changes and share them with other teammates.
+
+![Git](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2019/08/Picture11.jpg)
+
 ### Q. What are the advantages of using Git over other version control systems?
 Answer: Some of the advantages of using Git over other version control systems include its distributed nature, its ability to handle large projects, its branching and merging capabilities, and its fast performance. Git allows developers to work on their own local copies of a codebase and then easily merge their changes back into the main codebase. It also allows for multiple branches of a codebase to be developed simultaneously, which can speed up development and reduce the risk of conflicts.
+
+### Q. What is a distributed VCS?
+Answer: 
+- These are the systems that don’t rely on a central server to store a project file and all its versions.
+- In Distributed VCS, every contributor can get a local copy or “clone” of the main repository.
+- As you can see in the above diagram, every programmer can maintain a local repository which is actually the copy or clone of the central repository which is present on their hard drive. They can commit and update their local repository without any hassles.
+- With an operation called “pull”, they can update their local repositories with new data from the central server and “pull” operation affects changes to the main repository from their local repository.
+
+![VCS](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2019/06/Distributed-Version-Control-System-Workflow-What-Is-Git-Edureka-768x508-454x300.png)
+
+### Q. What language is used in Git?
+Answer: Git uses ‘C’ language. GIT is fast, and ‘C’ language makes this possible by reducing the overhead of run times associated with high-level languages.
+
+### Q. How can you fix a broken commit?
+Answer: In order to fix any broken commit, use the command “git commit --amend”. When you run this command, you can fix the broken commit message in the editor.
+
+### Q. How is git instaweb used?
+Answer: ‘git instaweb’ is used to automatically direct a web browser and run a webserver with an interface into your local repository.
+
+### Q. What is git is-tree?
+Answer: ‘git is-tree’ represents a tree object including the mode and the name of each item and the SHA-1 value of the blob or the tree.
+
+
 
 ### Q. What is a branch in Git?
 Answer: A branch in Git is a separate line of development that allows developers to work on a specific feature or bug fix without affecting the main codebase. Each branch is a separate copy of the codebase that can be modified independently, and changes made to one branch do not affect the other branches until they are merged together.
@@ -164,12 +196,6 @@ Answer:
 - You can add files one by one specifically using git add <file_name> command.
 - You can add contents of a particular folder by using git add /<folder_name>/ command
 
-### Q. You are working on a project with multiple developers and you need to merge your changes into the main codebase. However, there are conflicts that need to be resolved. How would you resolve the conflicts?
-Answer: To resolve conflicts, I would first use the Git command git status to identify the files with conflicts. Then, I would open the files in a text editor and manually resolve the conflicts by selecting which changes to keep and which to discard. Once I have resolved all conflicts, I would use the git add command to stage the changes and then use the git commit command to commit the changes.
-
-### Q. You accidentally deleted a file in your local Git repository. How would you retrieve the file?
-Answer: To retrieve the deleted file, I would use the Git command git checkout <file> followed by the name of the file that was deleted. This would retrieve the file from the most recent commit in the Git repository.
-
 ### Q. Why is it considered to be easy to work on Git?
 Answer: With the help of git, developers have gained many advantages in terms of performing the development process faster and in a more efficient manner. Some of the main features of git which has made it easier to work are:
 
@@ -262,11 +288,13 @@ Answer:
 - This is a distributed version control system installed on local machines which allow developers to keep track of commit histories and supports collaborative work.
 - This is maintained by “The Linux Foundation”.
 - SVN, Mercurial, etc are the competitors
+- Git is a version control system of distributed nature that is used to track changes in source code during software development. It aids in coordinating work among programmers, but it can be used to track changes in any set of files. The main objectives of Git are speed, data integrity, and support for distributed, non-linear workflows.
  
 #### GitHub:
 - This is a cloud-based source code repository developed by using git.
 - This was acquired by “Microsoft.
 - GitLab, Atlassian BitBucket, etc are the competitors.
+- GitHub is a Git repository hosting service, plus it adds many of its own features. GitHub provides a Web-based graphical interface. It also provides access control and several collaboration features, basic task management tools for every project. 
 
 ### Q. What has to be run to squash multiple commits (last N) into a single commit?
 Answer: Squashing multiple commits to a single one overwrites the history which is why it is recommended to be done using full caution. This step can be done by running the command: ```git rebase -i HEAD~{{N}}``` where {{N}} represents the number of commits needed to be squashed.
@@ -365,6 +393,15 @@ Answer:
 git reset <file_name> # remove file from index
 echo filename >> .gitingore  # add file to .gitignore to avoid mistake repetition. 
 ``` 
+### Q. In Git how do you revert a commit that has already been pushed and made public?
+Answer: There can be two approaches to tackle this question and make sure that you include both because any of the below options can be used depending on the situation:
+
+- Remove or fix the bad file in a new commit and then push it to the remote repository. This is the most obvious way to fix an error. Once you have made necessary changes to the file, then commit it to the remote repository using the command: git commit -m “commit message”
+
+- Also, you can create a new commit that undoes all changes that were made in the bad commit. To do this use the command
+```
+git revert <name of bad commit>
+```
  
 ### Q. What are the factors involved in considering which command to choose among: git merge and git rebase?
 Answer: Both these commands ensure that changes from one branch are integrated into another branch but in very different ways. Git rebasing can be thought of as saying to use another branch as a new base for the work.
@@ -404,6 +441,8 @@ Answer: 'Subgit' is a tool that migrates SVN to Git. It is a stable and stress-f
 - No need to change the infrastructure that is already placed.
 - It allows using all git and all sub-version features.
 - It provides stress ?free migration experience.
+- It can create a writable Git mirror of a local or remote Subversion repository and use both Subversion and Git as long as you like. 
+- Now you can also include some advantages like you can do a fast one-time import from Subversion to Git or use SubGit within Atlassian Bitbucket Server. We can use SubGit to create a bi-directional Git-SVN mirror of an existing Subversion repository. You can push to Git or commit to Subversion as per your convenience. Synchronization will be done by SubGit. 
  
 ### Q. Difference between Git revert & Git reset?
 Answer: 
@@ -505,10 +544,10 @@ Answer: git commit -am “For All Changes”
 4. Pushing 
  
 Answer: Rebasing
- 
+
 ### Q. You need to revert to a previous version of your codebase because of a bug introduced in the latest commit. How would you revert to the previous version?
 Answer: To revert to a previous version of the codebase, I would use the Git command git log to identify the commit that introduced the bug. Then, I would use the git checkout <commit> command followed by the commit ID to revert to the previous version of the codebase. If I need to make changes to this version, I would create a new branch and make the necessary changes there.
-
+ 
 ### Q. You need to create a new branch to work on a specific feature. How would you create a new branch and switch to it?
 Answer: To create a new branch, I would use the Git command git branch <branch-name> followed by the name of the new branch. To switch to the new branch, I would use the git checkout <branch-name> command followed by the name of the branch.
 
@@ -518,5 +557,11 @@ Answer: To update my local repository with the latest changes from the remote re
 ### Q. What does 'hooks' comprise of in Git?
 Answer: This index comprises of Shell contents which are enacted after running the relating git commands. For instance, Git will attempt to execute the post-commit content after you run a commit.
  
+### Q. You are working on a project with multiple developers and you need to merge your changes into the main codebase. However, there are conflicts that need to be resolved. How would you resolve the conflicts?
+Answer: To resolve conflicts, I would first use the Git command git status to identify the files with conflicts. Then, I would open the files in a text editor and manually resolve the conflicts by selecting which changes to keep and which to discard. Once I have resolved all conflicts, I would use the git add command to stage the changes and then use the git commit command to commit the changes.
+
+### Q. You accidentally deleted a file in your local Git repository. How would you retrieve the file?
+Answer: To retrieve the deleted file, I would use the Git command git checkout <file> followed by the name of the file that was deleted. This would retrieve the file from the most recent commit in the Git repository.
  
+
  
