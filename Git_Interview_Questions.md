@@ -43,8 +43,6 @@ Answer: ‘git instaweb’ is used to automatically direct a web browser and run
 ### Q. What is git is-tree?
 Answer: ‘git is-tree’ represents a tree object including the mode and the name of each item and the SHA-1 value of the blob or the tree.
 
-
-
 ### Q. What is a branch in Git?
 Answer: A branch in Git is a separate line of development that allows developers to work on a specific feature or bug fix without affecting the main codebase. Each branch is a separate copy of the codebase that can be modified independently, and changes made to one branch do not affect the other branches until they are merged together.
 
@@ -78,18 +76,50 @@ Answer: 'GIT PUSH' updates remote refs along with related objects
 ### Q. What is the definition of "Index" or "Staging Area" in GIT?
 Answer: When you are making the commits, you can make innovation to it, format it and review it in the common area known as 'Staging Area' or 'Index'.
 
+### Q. What is origin in Git?
+Answer: Origin refers to the remote repository that a project was originally cloned from and is used instead of the original repository’s URL. This allows for easier referencing.
+
 ### Q. What is git pull origin?
 Answer: pull is a get and a consolidation. 'git pull origin master' brings submits from the master branch of the source remote (into the local origin/master branch), and then it combines origin/master into the branch you currently have looked out.
 
 ### Q. Why GIT better than Subversion?
 Answer: GIT is an open source version control framework; it will enable you to run 'adaptations' of a task, which demonstrate the changes that were made to the code over time also it allows you keep the backtrack if vital and fix those changes. Multiple developers can check out, and transfer changes, and each change can then be attributed to a particular developer.
 
+### Q. What is tagging in Git?
+Answer: Tagging allows developers to mark all the important checkpoints through the course of their projects’ progress. Instead of commit IDs, tag names can be used while commits are checked out and pushed to a remote repo.
+
+### Q. What is forking in Git?
+Answer: A repository copy is called a fork. So, forking allows one to experiment with changes without worrying about the original project. This process is ideal for proposing changes to someone else’s projects.
+
+### Q. What is the use of a Git clone?
+Answer: The Git clone command lets us copy the existing Git repository. If we want to get a copy of the central repository then the best way to do it is using ‘cloning’.
+
+git clone is primarily used to point to an existing repo and make a clone or copy of that repo at in a new directory, at another location. The original repository can be located on the local filesystem or on remote machine accessible supported protocols. The git clone command copies an existing Git repository.
+![clone](https://bobbelderbos.com/assets/git-clone.png)
+
+More information [Here](https://bobbelderbos.com/2012/07/simple-bash-script-to-clone-remote-git-repositories/)
+
+### Q. What is the function of ‘git config’
+Answer:The ‘Git config’ is a great way to configure our options for the Git installation. Using this command, we can define the repository behavior, preferences and user information.
+
+### Q. What is the git push command?
+Answer: The git push command is applied for uploading content to a remote repository from a local repository. Pushing can overwrite changes, so it should be used with caution.
+
+### Q. What is the git pull command?
+Answer: The git pull command is for fetching and downloading content from a remote repository and integrating it with a local repository.
+
+### Q. What is the difference between git fetch and git pull?
+Answer: Git fetch retrieves new data from a remote repository but does not integrate it into our working files. It helps in checking if any changes happened in the remote repository. It does not manipulate or destroy anything in the process.
+
+Git pull, on the other hand, updates the HEAD with the latest changes from the remote server and directly integrates it into the working copy files. Using git pull can end in merge conflict as it tries to merge remote changes with the local ones.
+
 ### Q. What is the distinction between Git and Github?
-Answer: Git is a correction control framework, a tool to deal with your source code history.
-
-GitHub is a hosting function for Git storehouses.
-
-GitHub is a website where you can transfer a duplicate of your Git archive. It is a Git repository hosting service, which offers the majority of the distributed update control and source code management (SCM) usefulness of Git just as including its features
+Answer: 
+- Git is an open-source and free distributed version control system developed to handle projects of all sizes quickly and efficiently.
+- GitHub uses Git to provide Internet hosting for version control and software development. It offers the functionality of distributed version control and source code management, which is found in Git, in addition to other unique features.
+- Git is a correction control framework, a tool to deal with your source code history.
+- GitHub is a hosting function for Git storehouses.
+- GitHub is a website where you can transfer a duplicate of your Git archive. It is a Git repository hosting service, which offers the majority of the distributed update control and source code management (SCM) usefulness of Git just as including its features
 
 ### Q. In Git, how would you return a commit that has just been pushed and made open?
 Answer: There can be two answers to this question and ensure that you incorporate both because any of the below choices can be utilized relying upon the circumstance:
@@ -248,6 +278,10 @@ Answer: ```git stash apply``` command is used for bringing the works back to the
  
 This helps the developers to resume their work where they had last left their work before switching to other branches.
 
+### Q. What is the purpose of 'git config'?
+The 'Git config' is a great method to configure your choice for the Git installation. Using this command, you can describe the repository behavior, preferences, and user information.
+
+
 ### Q. Differentiate between git pull and git fetch.
 Answer: 
 #### Git Pull:
@@ -383,6 +417,10 @@ Answer: There can be cases where we want to revert from the pushed changes and g
  
 ### Q. What is the functionality of “git cherry-pick” command?
 Answer: This command is used to introduce certain commits from one branch onto another branch within the repository. The most common use case is when we want to forward- or back-port commits from the maintenance branch to the development branch.
+
+or
+
+Git cherry-pick is a command that allows the picking of arbitrary Git commits by reference and adding them to the HEAD. Cherry-picking is the process of picking a commit from one branch and applying it to another. It helps in undoing changes.
  
 ### Q. Explain steps involved in removing a file from git index without removing from the local file system?
 Answer: 
