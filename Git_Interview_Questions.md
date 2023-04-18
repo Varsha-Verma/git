@@ -602,4 +602,4 @@ Answer: To resolve conflicts, I would first use the Git command git status to id
 Answer: To retrieve the deleted file, I would use the Git command git checkout <file> followed by the name of the file that was deleted. This would retrieve the file from the most recent commit in the Git repository.
  
 
- 
+** All The Best ** 
