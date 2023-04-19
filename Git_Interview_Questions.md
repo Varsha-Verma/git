@@ -603,3 +603,7 @@ Answer: To retrieve the deleted file, I would use the Git command git checkout <
  
 
 ** All The Best ** 
+ 
+## Links for reference:
+ 
+- ![Git 101 Blog](https://cloud-and-devops.hashnode.dev/git101-abeginnersguideforgit) 
