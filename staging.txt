@@ -1,0 +1,4 @@
+Created the satging file which will be used in Git Squash
+Modifying the file
+Added another modification
+new modification
